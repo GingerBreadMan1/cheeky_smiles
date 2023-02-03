@@ -1,6 +1,6 @@
 def party_invoice():
     
-    base_price = ...
+    base_price = 100
     
     # input each addon as a string with the quantity and type
     # seperate each addon with a comma
