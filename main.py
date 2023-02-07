@@ -2,10 +2,10 @@ def party_invoice():
     
     base_price = 100
     
-    # create a price dictionary
+    #create a price dictionary
     price_dict = {
         
-        #Key: value
+        # Key: value,
         "H": 50,
         "S": 40,
         "Y": 35,
@@ -17,49 +17,47 @@ def party_invoice():
     }
     
     addons_dict = {
-        
-        #Key: value
-        "H": "Bounce House",
+        "H": "Bouncy House",
         "S": "Slip & Slide",
         "Y": "Yard Sign",
         "p": "Pizza",
-        "b": "Burgers",
+        "b": "Burger",
         "s": "Soda",
         "C": "Cake",
         "c": "Cupcake",
     }
     
+    # print("t john is cool and awsome")
     # input each addon as a string with the quantity and type
     # seperate each addon with a comma
     addons = input("What are the party addons? ")
-    print(addons)
+    # print(addons)
     
     # use the "split" method to convert the addons to a list
     addons_list = addons.split(",")
-    print(addons_list)
+    # print(addons_list)
+    
+    itemized_prices = "Thank you for being a faithful customer! We've found you've ordered the following:\n"
     
     for addon in addons_list:
         
         
         item = addon[-1]
-        count = addon[:-1]
+        count = int(addon[:-1])
+        price = price_dict.get(item, 0) * count
+        item_name = addons_dict.get(item, 0)
         
-        item_name = addons_dict.get(item)
-        print("item: ", item, "count: ", count)
+        # print("item: ", item_name, "count: ", count)
         
-        base_price += price_dict.get(item, 0) * count 
+        base_price += price
         
-        items = item,count
-        
-        print(f"{base_price} is your total price faithful customer!")
-        
-    
-    
+        itemized = f"\n{item_name}, {count} and ${'{:.2f}'.format(price)}"
+        itemized_prices += itemized
 
-    
-    
-    
-    
+
+    itemized_prices += "\n\nBase Price, $100.00"
+    itemized_prices += f"\nTotal, ${base_price}"
+    print(itemized_prices)   
     
     
     
